@@ -1,0 +1,11 @@
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\WindowsFormsAppEvent\bin\Debug\WindowsFormsAppEvent.exe.config
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\WindowsFormsAppEvent\bin\Debug\WindowsFormsAppEvent.exe
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\WindowsFormsAppEvent\bin\Debug\WindowsFormsAppEvent.pdb
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\WindowsFormsAppEvent\obj\Debug\WindowsFormsAppEvent.csprojAssemblyReference.cache
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\WindowsFormsAppEvent\obj\Debug\WindowsFormsAppEvent.Form1.resources
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\WindowsFormsAppEvent\obj\Debug\WindowsFormsAppEvent.Form2.resources
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\WindowsFormsAppEvent\obj\Debug\WindowsFormsAppEvent.Properties.Resources.resources
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\WindowsFormsAppEvent\obj\Debug\WindowsFormsAppEvent.csproj.GenerateResource.cache
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\WindowsFormsAppEvent\obj\Debug\WindowsFormsAppEvent.csproj.CoreCompileInputs.cache
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\WindowsFormsAppEvent\obj\Debug\WindowsFormsAppEvent.exe
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\WindowsFormsAppEvent\obj\Debug\WindowsFormsAppEvent.pdb
