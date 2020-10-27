@@ -1,0 +1,7 @@
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\StringFormat\bin\Debug\StringFormat.exe.config
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\StringFormat\bin\Debug\StringFormat.exe
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\StringFormat\bin\Debug\StringFormat.pdb
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\StringFormat\obj\Debug\StringFormat.csproj.CoreCompileInputs.cache
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\StringFormat\obj\Debug\StringFormat.exe
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\StringFormat\obj\Debug\StringFormat.pdb
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\StringFormat\obj\Debug\StringFormat.csprojAssemblyReference.cache

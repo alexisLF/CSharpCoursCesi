@@ -1,0 +1,7 @@
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\AppConsole\bin\Debug\AppConsole.exe.config
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\AppConsole\bin\Debug\AppConsole.exe
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\AppConsole\bin\Debug\AppConsole.pdb
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\AppConsole\obj\Debug\AppConsole.csprojAssemblyReference.cache
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\AppConsole\obj\Debug\AppConsole.csproj.CoreCompileInputs.cache
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\AppConsole\obj\Debug\AppConsole.exe
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\AppConsole\obj\Debug\AppConsole.pdb
