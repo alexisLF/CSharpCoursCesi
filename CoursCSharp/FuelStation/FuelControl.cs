@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -14,6 +15,9 @@ namespace FuelStation
     {
         FuelPrice pU { get; set; }
         FuelUi fUi { get; set; }
+        Thread th;
+        
+
         public FuelControl()
         {
             InitializeComponent();
@@ -64,13 +68,21 @@ namespace FuelStation
         private void pullTriggerBtn_Click(object sender, EventArgs e)
         {
             fUi.SelectTab(6);
-
+            if (th == null)
+            {
+                th = new Thread(new ThreadStart(pU.IncrementFuel));
+                th.Start();
+                pU.waitThread.Set();
+            }
+            else
+            {
+                pU.waitThread.Set();
+            }
         }
 
         private void releaseTriggerBtn_Click(object sender, EventArgs e)
         {
-           
-
+            pU.waitThread.Reset();
         }
 
         private void putPumpAwayBtn_Click(object sender, EventArgs e)
