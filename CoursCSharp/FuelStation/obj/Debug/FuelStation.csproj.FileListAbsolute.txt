@@ -1,0 +1,13 @@
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\bin\Debug\FuelStation.exe.config
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\bin\Debug\FuelStation.exe
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\bin\Debug\FuelStation.pdb
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\obj\Debug\FuelStation.FuelControl.resources
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\obj\Debug\FuelStation.FuelUi.resources
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\obj\Debug\FuelStation.Properties.Resources.resources
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\obj\Debug\FuelStation.csproj.GenerateResource.cache
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\obj\Debug\FuelStation.csproj.CoreCompileInputs.cache
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\obj\Debug\FuelStation.exe
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\obj\Debug\FuelStation.pdb
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\obj\Debug\FuelStation.FuelPrice.resources
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\obj\Debug\FuelStation.NumPad.resources
+C:\Users\stm\Documents\CODE\AppConsole\CoursCSharp\FuelStation\obj\Debug\FuelStation.csprojAssemblyReference.cache
