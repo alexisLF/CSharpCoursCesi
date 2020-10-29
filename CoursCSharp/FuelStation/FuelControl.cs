@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -13,82 +14,102 @@ namespace FuelStation
 {
     public partial class FuelControl : Form
     {
-        FuelPrice pU { get; set; }
-        FuelUi fUi { get; set; }
+        public FuelPrice pU { get; set; }
+        public FuelUi fUi { get; set; }
         Thread th;
-        
+        ErrorManager err { get; set; }
+        private bool IsCardInside { get; set; } = false;
 
         public FuelControl()
         {
             InitializeComponent();
             pU = new FuelPrice();
             fUi = new FuelUi();
+            err = new ErrorManager(this);
+            fUi.ChangeTab += ManageStateApp;
+            fUi.SelectTab(0);
             pU.Show();
             fUi.Show();
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
-            fUi.ChangeTab += ManageStateApp;
         }
 
         private void touchScreenBtn_Click(object sender, EventArgs e)
         {
-            fUi.SelectTab(1);
+            if(fUi.State == State.Welcome)
+                fUi.SelectTab(1);
         }
 
         private void insertCardBtn_Click(object sender, EventArgs e)
         {
-            fUi.SelectTab(2);
-
+            if(fUi.State == State.Welcome || fUi.State == State.InsertCard)
+                fUi.SelectTab(2);
         }
 
         private void removeCardBtn_Click(object sender, EventArgs e)
         {
-            fUi.SelectTab(3);
-
+            if(IsCardInside)
+                fUi.SelectTab(3);
         }
 
         private void pump1Btn_Click(object sender, EventArgs e)
         {
-            fUi.SelectTab(5);
-
+            if (fUi.State == State.TakeFuel && fUi.SelectedFuelType == FuelType.Gasole)
+                pullTriggerBtn.Enabled = true;
+            else
+                err.ShowPumpError();
         }
 
         private void pump2Btn_Click(object sender, EventArgs e)
         {
-            fUi.SelectTab(5);
-
+            if (fUi.State == State.TakeFuel && fUi.SelectedFuelType == FuelType.SP98)
+                pullTriggerBtn.Enabled = true;
+            else
+                err.ShowPumpError();
         }
 
         private void pump3Btn_Click(object sender, EventArgs e)
         {
-            fUi.SelectTab(5);
-
+            if (fUi.State == State.TakeFuel && fUi.SelectedFuelType == FuelType.SP95)
+                pullTriggerBtn.Enabled = true;
+            else
+                err.ShowPumpError();
         }
 
         private void pullTriggerBtn_Click(object sender, EventArgs e)
         {
-            fUi.SelectTab(6);
-            if (th == null)
+            if(fUi.State == State.TakeFuel)
             {
-                th = new Thread(new ThreadStart(pU.IncrementFuel));
-                th.Start();
-                pU.waitThread.Set();
+                fUi.SelectTab(6);
+                if (th == null)
+                {
+                    th = new Thread(new ThreadStart(pU.IncrementFuel));
+                    th.Start();
+                    pU.waitThread.Set();
+                }
+                else
+                {
+                    pU.waitThread.Set();
+                }
             }
-            else
-            {
-                pU.waitThread.Set();
-            }
+            
         }
 
-        private void releaseTriggerBtn_Click(object sender, EventArgs e)
+        private void ReleaseTriggerBtn_Click(object sender, EventArgs e)
         {
-            pU.waitThread.Reset();
+            if (fUi.State == State.InProgress)
+            {
+                fUi.SelectTab(5);
+                pU.waitThread.Reset();
+            }
         }
 
         private void putPumpAwayBtn_Click(object sender, EventArgs e)
         {
-            fUi.SelectTab(7);
-
+            if (fUi.State == State.ErrorPump)
+                fUi.SelectTab((int)fUi.LastStateBeforeError);
+            else
+                fUi.SelectTab(7);
         }
 
         private void ManageStateApp(object sender, State state)
@@ -170,7 +191,10 @@ namespace FuelStation
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
                     putPumpAwayBtn.Enabled = true;
-
+                    string name = Enum.GetName(typeof(FuelType), (int)fUi.SelectedFuelType);
+                    string s = ConfigurationManager.AppSettings[name];
+                    pU.UnitPrice = Convert.ToDouble(s);
+                    pU.UpdateUnitPrice();
                     break;
 
                 case State.InProgress:

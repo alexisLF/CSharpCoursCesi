@@ -38,6 +38,9 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.putCodeLabel = new System.Windows.Forms.Label();
             this.fuelTypePage = new System.Windows.Forms.TabPage();
+            this.pu95Btn = new System.Windows.Forms.Button();
+            this.su98Btn = new System.Windows.Forms.Button();
+            this.gasoleBtn = new System.Windows.Forms.Button();
             this.fuelTypeLabel = new System.Windows.Forms.Label();
             this.pumpPage = new System.Windows.Forms.TabPage();
             this.takePumpLabel = new System.Windows.Forms.Label();
@@ -47,6 +50,8 @@
             this.inProgressLabel = new System.Windows.Forms.Label();
             this.thanksPage = new System.Windows.Forms.TabPage();
             this.thanksLabel = new System.Windows.Forms.Label();
+            this.ErrorPumpTab = new System.Windows.Forms.TabPage();
+            this.ErrorPumpLabel = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.welcomePage.SuspendLayout();
             this.insertCardPage.SuspendLayout();
@@ -56,6 +61,7 @@
             this.takeFuelPage.SuspendLayout();
             this.inProgressPage.SuspendLayout();
             this.thanksPage.SuspendLayout();
+            this.ErrorPumpTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -68,6 +74,7 @@
             this.tabControl1.Controls.Add(this.takeFuelPage);
             this.tabControl1.Controls.Add(this.inProgressPage);
             this.tabControl1.Controls.Add(this.thanksPage);
+            this.tabControl1.Controls.Add(this.ErrorPumpTab);
             this.tabControl1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -176,12 +183,52 @@
             // fuelTypePage
             // 
             this.fuelTypePage.BackColor = System.Drawing.Color.Black;
+            this.fuelTypePage.Controls.Add(this.pu95Btn);
+            this.fuelTypePage.Controls.Add(this.su98Btn);
+            this.fuelTypePage.Controls.Add(this.gasoleBtn);
             this.fuelTypePage.Controls.Add(this.fuelTypeLabel);
             this.fuelTypePage.Location = new System.Drawing.Point(4, 22);
             this.fuelTypePage.Name = "fuelTypePage";
             this.fuelTypePage.Size = new System.Drawing.Size(608, 545);
             this.fuelTypePage.TabIndex = 3;
             this.fuelTypePage.Text = "FuelType";
+            // 
+            // pu95Btn
+            // 
+            this.pu95Btn.BackColor = System.Drawing.Color.LawnGreen;
+            this.pu95Btn.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pu95Btn.Location = new System.Drawing.Point(350, 186);
+            this.pu95Btn.Name = "pu95Btn";
+            this.pu95Btn.Size = new System.Drawing.Size(92, 77);
+            this.pu95Btn.TabIndex = 7;
+            this.pu95Btn.Text = "SP95";
+            this.pu95Btn.UseVisualStyleBackColor = false;
+            this.pu95Btn.Click += new System.EventHandler(this.FuelTypeBtn_Click);
+            // 
+            // su98Btn
+            // 
+            this.su98Btn.BackColor = System.Drawing.Color.LawnGreen;
+            this.su98Btn.Font = new System.Drawing.Font("Algerian", 12F);
+            this.su98Btn.Location = new System.Drawing.Point(224, 186);
+            this.su98Btn.Name = "su98Btn";
+            this.su98Btn.Size = new System.Drawing.Size(99, 77);
+            this.su98Btn.TabIndex = 6;
+            this.su98Btn.Text = "SP98";
+            this.su98Btn.UseVisualStyleBackColor = false;
+            this.su98Btn.Click += new System.EventHandler(this.FuelTypeBtn_Click);
+            // 
+            // gasoleBtn
+            // 
+            this.gasoleBtn.BackColor = System.Drawing.Color.Gold;
+            this.gasoleBtn.Font = new System.Drawing.Font("Algerian", 12F);
+            this.gasoleBtn.ForeColor = System.Drawing.Color.Black;
+            this.gasoleBtn.Location = new System.Drawing.Point(92, 186);
+            this.gasoleBtn.Name = "gasoleBtn";
+            this.gasoleBtn.Size = new System.Drawing.Size(101, 77);
+            this.gasoleBtn.TabIndex = 5;
+            this.gasoleBtn.Text = "Gasole";
+            this.gasoleBtn.UseVisualStyleBackColor = false;
+            this.gasoleBtn.Click += new System.EventHandler(this.FuelTypeBtn_Click);
             // 
             // fuelTypeLabel
             // 
@@ -303,6 +350,28 @@
             this.thanksLabel.Text = "Thanks";
             this.thanksLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // ErrorPumpTab
+            // 
+            this.ErrorPumpTab.BackColor = System.Drawing.Color.Black;
+            this.ErrorPumpTab.Controls.Add(this.ErrorPumpLabel);
+            this.ErrorPumpTab.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ErrorPumpTab.Location = new System.Drawing.Point(4, 22);
+            this.ErrorPumpTab.Name = "ErrorPumpTab";
+            this.ErrorPumpTab.Size = new System.Drawing.Size(608, 545);
+            this.ErrorPumpTab.TabIndex = 8;
+            this.ErrorPumpTab.Text = "Please put the pump back !!";
+            // 
+            // ErrorPumpLabel
+            // 
+            this.ErrorPumpLabel.AutoSize = true;
+            this.ErrorPumpLabel.Font = new System.Drawing.Font("Algerian", 24F);
+            this.ErrorPumpLabel.ForeColor = System.Drawing.Color.Red;
+            this.ErrorPumpLabel.Location = new System.Drawing.Point(68, 245);
+            this.ErrorPumpLabel.Name = "ErrorPumpLabel";
+            this.ErrorPumpLabel.Size = new System.Drawing.Size(481, 35);
+            this.ErrorPumpLabel.TabIndex = 7;
+            this.ErrorPumpLabel.Text = "Please take the right pump";
+            // 
             // FuelUi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,6 +397,8 @@
             this.inProgressPage.PerformLayout();
             this.thanksPage.ResumeLayout(false);
             this.thanksPage.PerformLayout();
+            this.ErrorPumpTab.ResumeLayout(false);
+            this.ErrorPumpTab.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -353,5 +424,10 @@
         private System.Windows.Forms.Label thanksLabel;
         private System.Windows.Forms.TextBox textBox1;
         private NumPad numPad1;
+        private System.Windows.Forms.TabPage ErrorPumpTab;
+        private System.Windows.Forms.Label ErrorPumpLabel;
+        private System.Windows.Forms.Button pu95Btn;
+        private System.Windows.Forms.Button su98Btn;
+        private System.Windows.Forms.Button gasoleBtn;
     }
 }

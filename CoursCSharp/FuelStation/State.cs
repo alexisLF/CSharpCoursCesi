@@ -15,6 +15,7 @@ namespace FuelStation
         ChooseTypeFuel,
         TakeFuel,
         InProgress,
-        Thanks
+        Thanks,
+        ErrorPump
     }
 }

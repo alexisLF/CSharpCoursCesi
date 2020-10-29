@@ -22,7 +22,6 @@ namespace FuelStation
         public FuelPrice()
         {
             InitializeComponent();
-            UnitPrice = 1.42;
             FuelLiterBox.Text = FuelLitre.ToString();
             PriceBox.Text = Price.ToString();
             UnitPriceBox.Text = UnitPrice.ToString();
@@ -54,6 +53,11 @@ namespace FuelStation
             {
                 PriceBox.Text = Price.ToString();
             }
+        }
+
+        public void UpdateUnitPrice()
+        {
+            UnitPriceBox.Text = UnitPrice.ToString();
         }
 
         public void IncrementFuel()

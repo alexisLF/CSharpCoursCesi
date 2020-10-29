@@ -45,7 +45,7 @@
             this.removeCardBtn.Name = "removeCardBtn";
             this.removeCardBtn.Size = new System.Drawing.Size(195, 23);
             this.removeCardBtn.TabIndex = 17;
-            this.removeCardBtn.Text = "Retirer carte";
+            this.removeCardBtn.Text = "Remove your card";
             this.removeCardBtn.UseVisualStyleBackColor = true;
             this.removeCardBtn.Click += new System.EventHandler(this.removeCardBtn_Click);
             // 
@@ -55,7 +55,7 @@
             this.putPumpAwayBtn.Name = "putPumpAwayBtn";
             this.putPumpAwayBtn.Size = new System.Drawing.Size(195, 25);
             this.putPumpAwayBtn.TabIndex = 16;
-            this.putPumpAwayBtn.Text = "Ranger Pistolet";
+            this.putPumpAwayBtn.Text = "Put Pump Back";
             this.putPumpAwayBtn.UseVisualStyleBackColor = true;
             this.putPumpAwayBtn.Click += new System.EventHandler(this.putPumpAwayBtn_Click);
             // 
@@ -65,9 +65,9 @@
             this.releaseTriggerBtn.Name = "releaseTriggerBtn";
             this.releaseTriggerBtn.Size = new System.Drawing.Size(195, 25);
             this.releaseTriggerBtn.TabIndex = 15;
-            this.releaseTriggerBtn.Text = "Relacher Gachette";
+            this.releaseTriggerBtn.Text = "Release Pump Trigger";
             this.releaseTriggerBtn.UseVisualStyleBackColor = true;
-            this.releaseTriggerBtn.Click += new System.EventHandler(this.releaseTriggerBtn_Click);
+            this.releaseTriggerBtn.Click += new System.EventHandler(this.ReleaseTriggerBtn_Click);
             // 
             // pullTriggerBtn
             // 
@@ -75,7 +75,7 @@
             this.pullTriggerBtn.Name = "pullTriggerBtn";
             this.pullTriggerBtn.Size = new System.Drawing.Size(195, 20);
             this.pullTriggerBtn.TabIndex = 14;
-            this.pullTriggerBtn.Text = "Activer gachette";
+            this.pullTriggerBtn.Text = "Pull Pump Trigger";
             this.pullTriggerBtn.UseVisualStyleBackColor = true;
             this.pullTriggerBtn.Click += new System.EventHandler(this.pullTriggerBtn_Click);
             // 
@@ -85,7 +85,7 @@
             this.pump3Btn.Name = "pump3Btn";
             this.pump3Btn.Size = new System.Drawing.Size(195, 23);
             this.pump3Btn.TabIndex = 13;
-            this.pump3Btn.Text = "pump3";
+            this.pump3Btn.Text = "PU95 pump";
             this.pump3Btn.UseVisualStyleBackColor = true;
             this.pump3Btn.Click += new System.EventHandler(this.pump3Btn_Click);
             // 
@@ -95,7 +95,7 @@
             this.pump2Btn.Name = "pump2Btn";
             this.pump2Btn.Size = new System.Drawing.Size(195, 23);
             this.pump2Btn.TabIndex = 12;
-            this.pump2Btn.Text = "pump2";
+            this.pump2Btn.Text = "SU98 pump";
             this.pump2Btn.UseVisualStyleBackColor = true;
             this.pump2Btn.Click += new System.EventHandler(this.pump2Btn_Click);
             // 
@@ -105,7 +105,7 @@
             this.pump1Btn.Name = "pump1Btn";
             this.pump1Btn.Size = new System.Drawing.Size(195, 23);
             this.pump1Btn.TabIndex = 11;
-            this.pump1Btn.Text = "Pistolet 1";
+            this.pump1Btn.Text = "Gasole Pump";
             this.pump1Btn.UseVisualStyleBackColor = true;
             this.pump1Btn.Click += new System.EventHandler(this.pump1Btn_Click);
             // 
@@ -115,7 +115,7 @@
             this.insertCardBtn.Name = "insertCardBtn";
             this.insertCardBtn.Size = new System.Drawing.Size(195, 33);
             this.insertCardBtn.TabIndex = 10;
-            this.insertCardBtn.Text = "Inserer CB";
+            this.insertCardBtn.Text = "Insert your card";
             this.insertCardBtn.UseVisualStyleBackColor = true;
             this.insertCardBtn.Click += new System.EventHandler(this.insertCardBtn_Click);
             // 
@@ -125,7 +125,7 @@
             this.touchScreenBtn.Name = "touchScreenBtn";
             this.touchScreenBtn.Size = new System.Drawing.Size(195, 30);
             this.touchScreenBtn.TabIndex = 9;
-            this.touchScreenBtn.Text = "Toucher Ecran";
+            this.touchScreenBtn.Text = "Touch Screen";
             this.touchScreenBtn.UseVisualStyleBackColor = true;
             this.touchScreenBtn.Click += new System.EventHandler(this.touchScreenBtn_Click);
             // 
