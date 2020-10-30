@@ -66,6 +66,7 @@
             // UnitPriceBox
             // 
             this.UnitPriceBox.Location = new System.Drawing.Point(123, 97);
+            this.UnitPriceBox.MaxLength = 4;
             this.UnitPriceBox.Name = "UnitPriceBox";
             this.UnitPriceBox.ReadOnly = true;
             this.UnitPriceBox.Size = new System.Drawing.Size(161, 20);
@@ -74,6 +75,7 @@
             // PriceBox
             // 
             this.PriceBox.Location = new System.Drawing.Point(123, 62);
+            this.PriceBox.MaxLength = 4;
             this.PriceBox.Name = "PriceBox";
             this.PriceBox.ReadOnly = true;
             this.PriceBox.Size = new System.Drawing.Size(161, 20);
@@ -82,6 +84,7 @@
             // FuelLiterBox
             // 
             this.FuelLiterBox.Location = new System.Drawing.Point(123, 25);
+            this.FuelLiterBox.MaxLength = 4;
             this.FuelLiterBox.Name = "FuelLiterBox";
             this.FuelLiterBox.ReadOnly = true;
             this.FuelLiterBox.Size = new System.Drawing.Size(161, 20);

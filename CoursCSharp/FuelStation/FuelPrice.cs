@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
+﻿using System.Configuration;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FuelStation
@@ -29,16 +22,14 @@ namespace FuelStation
 
         public void UpdateFuelLitre()
         {
-            if (FuelLiterBox.InvokeRequired)
+            if (!FuelLiterBox.InvokeRequired)
             {
-                UpdateFuelLitreCallback d = new UpdateFuelLitreCallback(UpdateFuelLitre);
-                this.Invoke(d);
+                FuelLiterBox.Text = string.Format("{0:0.00}", FuelLitre);
             }
             else
             {
-                Price = FuelLitre * UnitPrice;
-                FuelLiterBox.Text = FuelLitre.ToString();
-                PriceBox.Text = Price.ToString();
+                UpdateFuelLitreCallback d = new UpdateFuelLitreCallback(UpdateFuelLitre);
+                this.Invoke(d);
             }
         }
 
@@ -51,18 +42,18 @@ namespace FuelStation
             }
             else
             {
-                PriceBox.Text = Price.ToString();
+                PriceBox.Text = string.Format("{0:0.00}", Price);
             }
         }
 
         public void UpdateUnitPrice()
         {
-            UnitPriceBox.Text = UnitPrice.ToString();
+            UnitPriceBox.Text = string.Format("{0:0.00}", UnitPrice);
         }
 
         public void IncrementFuel()
         {
-            while (true)
+            while (Price < double.Parse(ConfigurationManager.AppSettings["MaxSpent"]))
             {
                 waitThread.WaitOne();
 
@@ -70,6 +61,7 @@ namespace FuelStation
                 Price = FuelLitre * UnitPrice;
                 UpdateFuelLitre();
                 UpdatePrice();
+                Thread.Sleep(9);
             }
         }
     }

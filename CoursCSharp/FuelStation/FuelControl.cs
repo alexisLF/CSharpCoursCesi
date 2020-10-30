@@ -48,7 +48,7 @@ namespace FuelStation
 
         private void removeCardBtn_Click(object sender, EventArgs e)
         {
-            if(IsCardInside)
+            if(fUi.State == State.PutCode && IsCardInside)
                 fUi.SelectTab(3);
         }
 
@@ -80,6 +80,7 @@ namespace FuelStation
         {
             if(fUi.State == State.TakeFuel)
             {
+                
                 fUi.SelectTab(6);
                 if (th == null)
                 {
@@ -101,6 +102,8 @@ namespace FuelStation
             {
                 fUi.SelectTab(5);
                 pU.waitThread.Reset();
+                pullTriggerBtn.Enabled = true;
+                putPumpAwayBtn.Enabled = true;
             }
         }
 
@@ -109,7 +112,10 @@ namespace FuelStation
             if (fUi.State == State.ErrorPump)
                 fUi.SelectTab((int)fUi.LastStateBeforeError);
             else
+            {
+                th.Abort();
                 fUi.SelectTab(7);
+            }
         }
 
         private void ManageStateApp(object sender, State state)
@@ -201,12 +207,12 @@ namespace FuelStation
                     touchScreenBtn.Enabled = false;
                     insertCardBtn.Enabled = false;
                     removeCardBtn.Enabled = false;
-                    pump1Btn.Enabled = true;
-                    pump2Btn.Enabled = true;
-                    pump3Btn.Enabled = true;
-                    pullTriggerBtn.Enabled = true;
+                    pump1Btn.Enabled = false;
+                    pump2Btn.Enabled = false;
+                    pump3Btn.Enabled = false;
+                    pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = true;
-                    putPumpAwayBtn.Enabled = true;
+                    putPumpAwayBtn.Enabled = false;
 
                     break;
 
@@ -224,6 +230,11 @@ namespace FuelStation
                     break;
 
             }
+        }
+
+        private void FuelControl_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            th?.Abort();
         }
     }
 }

@@ -145,6 +145,7 @@
             this.Controls.Add(this.touchScreenBtn);
             this.Name = "FuelControl";
             this.Text = "FuelControl";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FuelControl_FormClosed);
             this.ResumeLayout(false);
 
         }

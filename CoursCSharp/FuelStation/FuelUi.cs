@@ -67,8 +67,12 @@ namespace FuelStation
 
         public void ShowErrorPumpTab()
         {
-            LastStateBeforeError = State;
-            SelectTab((int)State.ErrorPump);
+            if(LastStateBeforeError != State.ErrorPump)
+            {
+                LastStateBeforeError = State;
+                SelectTab((int)State.ErrorPump);
+            }
+            
         }
 
         public void ReturnToNormalState()
