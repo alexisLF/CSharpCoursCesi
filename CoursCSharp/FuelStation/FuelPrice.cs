@@ -31,7 +31,7 @@ namespace FuelStation
             else
             {
                 UpdateFuelLitreCallback d = new UpdateFuelLitreCallback(UpdateFuelLitre);
-                this.Invoke(d);
+                Invoke(d);
             }
         }
 
@@ -40,7 +40,7 @@ namespace FuelStation
             if (FuelLiterBox.InvokeRequired)
             {
                 UpdatePriceCallback d = new UpdatePriceCallback(UpdatePrice);
-                this.Invoke(d);
+                Invoke(d);
             }
             else
             {
@@ -58,14 +58,11 @@ namespace FuelStation
             while (Price < double.Parse(ConfigurationManager.AppSettings["MaxSpent"]))
             {
                 waitThread.WaitOne();
-
                 FuelLitre += 0.01;
                 Price = FuelLitre * UnitPrice;
                 UpdateFuelLitre();
                 UpdatePrice();
-                //Thread.Sleep(9);
             }
-            
             StopPump();
         }
 

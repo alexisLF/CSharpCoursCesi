@@ -8,141 +8,154 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 
 namespace FuelStation
 {
     public partial class FuelControl : Form
     {
-        public FuelPrice pU { get; set; }
-        public FuelUi fUi { get; set; }
-        Thread th;
-        ErrorManager err { get; set; }
+        public FuelPrice PriceUi { get; set; }
+        public FuelUi FuelScreen { get; set; }
+        private Thread WorkingThread;
+        private ErrorManager ErrorManager { get; set; }
         public bool PumpPulled { get; set; } = false;
         private delegate void TriggerFalseCallback();
-
+        private static System.Timers.Timer EndTimer;
 
         public FuelControl()
         {
             InitializeComponent();
-            pU = new FuelPrice();
-            fUi = new FuelUi();
-            err = new ErrorManager(this);
-            fUi.ChangeTab += ManageStateApp;
-            fUi.SelectTab((int)State.Welcome);
-            pU.MaxPrice += ManageEndPump;
-            pU.Show();
-            fUi.Show();
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+
+            PriceUi = new FuelPrice();
+            FuelScreen = new FuelUi();
+
+            ErrorManager = new ErrorManager(this);
+            FuelScreen.ChangeTab += ManageStateApp;
+            FuelScreen.SelectTab((int)State.Welcome);
+            PriceUi.MaxPrice += ManageEndPump;
+
+            this.Width = screenWidth / 4;
+            this.Height = screenHeight /2;
+            PriceUi.Width = screenWidth / 4;
+            PriceUi.Height = screenHeight / 3;
+
+            this.StartPosition = FormStartPosition.Manual;
+            this.Location = new Point(0, PriceUi.Height);
+
+            FuelScreen.StartPosition = FormStartPosition.Manual;
+            FuelScreen.Location = new Point(this.Width, 0);
+
+            PriceUi.StartPosition = FormStartPosition.Manual;
+            PriceUi.Location = new Point(0, 0);
+
+            PriceUi.Show();
+            FuelScreen.Show();
         }
 
         private void ManageEndPump(object sender, EventArgs e)
         {
             TriggerFalse();
-            th.Abort();
-
+            WorkingThread.Abort();
         }
 
-        private void touchScreenBtn_Click(object sender, EventArgs e)
+        private void TouchScreenBtn_Click(object sender, EventArgs e)
         {
-            if(fUi.State == State.Welcome)
-                fUi.SelectTab((int)State.InsertCard);
+            if(FuelScreen.State == State.Welcome)
+                FuelScreen.SelectTab((int)State.InsertCard);
         }
 
-        private void insertCardBtn_Click(object sender, EventArgs e)
+        private void InsertCardBtn_Click(object sender, EventArgs e)
         {
-            if(fUi.State == State.Welcome || fUi.State == State.InsertCard)
-            {
-                fUi.SelectTab((int)State.PutCode);
-            }
+            if(FuelScreen.State == State.Welcome || FuelScreen.State == State.InsertCard)
+                FuelScreen.SelectTab((int)State.PutCode);
         }
 
-        private void removeCardBtn_Click(object sender, EventArgs e)
+        private void RemoveCardBtn_Click(object sender, EventArgs e)
         {
-            if(fUi.State == State.PullCard)
-                fUi.SelectTab((int)State.ChooseTypeFuel);
+            if(FuelScreen.State == State.PullCard)
+                FuelScreen.SelectTab((int)State.ChooseTypeFuel);
             else
-                fUi.SelectTab((int)State.Welcome);
+                FuelScreen.SelectTab((int)State.Welcome);
         }
 
-        private void pump1Btn_Click(object sender, EventArgs e)
+        private void Pump1Btn_Click(object sender, EventArgs e)
         {
             PumpPulled = true;
             pump2Btn.Enabled = false;
             putPumpAwayBtn.Enabled = true;
             pump3Btn.Enabled = false;
-            if (fUi.State == State.PullPump && fUi.SelectedFuelType == FuelType.Gasole)
-                pullTriggerBtn.Enabled = true;
+            if (FuelScreen.State == State.PullPump && FuelScreen.SelectedFuelType == FuelType.Gasole)
+                FuelScreen.SelectTab((int)State.TakeFuel);
             else
-                err.ShowPumpError();
-
+                ErrorManager.ShowPumpError();
         }
 
-        private void pump2Btn_Click(object sender, EventArgs e)
+        private void Pump2Btn_Click(object sender, EventArgs e)
         {
             PumpPulled = true;
             pump1Btn.Enabled = false;
             pump3Btn.Enabled = false;
             putPumpAwayBtn.Enabled = true;
-            if (fUi.State == State.PullPump && fUi.SelectedFuelType == FuelType.SP98)
-                pullTriggerBtn.Enabled = true;
+            if (FuelScreen.State == State.PullPump && FuelScreen.SelectedFuelType == FuelType.SP98)
+                FuelScreen.SelectTab((int)State.TakeFuel);
             else
-                err.ShowPumpError();
+                ErrorManager.ShowPumpError();
         }
 
-        private void pump3Btn_Click(object sender, EventArgs e)
+        private void Pump3Btn_Click(object sender, EventArgs e)
         {
             PumpPulled = true;
             pump1Btn.Enabled = false;
             pump2Btn.Enabled = false;
             putPumpAwayBtn.Enabled = true;
 
-            if (fUi.State == State.PullPump && fUi.SelectedFuelType == FuelType.SP95)
-                pullTriggerBtn.Enabled = true;
+            if (FuelScreen.State == State.PullPump && FuelScreen.SelectedFuelType == FuelType.SP95)
+                FuelScreen.SelectTab((int)State.TakeFuel);
             else
-                err.ShowPumpError();
+                ErrorManager.ShowPumpError();
         }
 
-        private void pullTriggerBtn_Click(object sender, EventArgs e)
+        private void PullTriggerBtn_Click(object sender, EventArgs e)
         {
-            if(fUi.State == State.PullPump)
+            if(FuelScreen.State == State.TakeFuel)
             {
-                fUi.SelectTab((int)State.InProgress);
-                if (th == null)
+                FuelScreen.SelectTab((int)State.InProgress);
+                if (WorkingThread == null)
                 {
-                    th = new Thread(new ThreadStart(pU.IncrementFuel));
-                    th.Start();
-                    pU.waitThread.Set();
+                    WorkingThread = new Thread(new ThreadStart(PriceUi.IncrementFuel));
+                    WorkingThread.Start();
+                    PriceUi.waitThread.Set();
                 }
                 else
                 {
-                    pU.waitThread.Set();
+                    PriceUi.waitThread.Set();
                 }
             }
         }
 
         private void ReleaseTriggerBtn_Click(object sender, EventArgs e)
         {
-            if (fUi.State == State.InProgress)
+            if (FuelScreen.State == State.InProgress)
             {
-                fUi.SelectTab((int)State.PullPump);
-                pU.waitThread.Reset();
-                pullTriggerBtn.Enabled = true;
-                putPumpAwayBtn.Enabled = true;
+                FuelScreen.SelectTab((int)State.TakeFuel);
+                PriceUi.waitThread.Reset();
+                
             }
         }
 
-        private void putPumpAwayBtn_Click(object sender, EventArgs e)
+        private void PutPumpAwayBtn_Click(object sender, EventArgs e)
         {
-            if (fUi.State == State.ErrorPump)
+            if (FuelScreen.State == State.ErrorPump)
             {
-                fUi.SelectTab((int)fUi.LastStateBeforeError);
+                FuelScreen.SelectTab((int)FuelScreen.LastStateBeforeError);
             }
             else
             {
-                th?.Abort();
-                fUi.SelectTab((int)State.Thanks);
+                WorkingThread?.Abort();
+                FuelScreen.SelectTab((int)State.Thanks);
             }
         }
 
@@ -161,7 +174,6 @@ namespace FuelStation
                     releaseTriggerBtn.Enabled = false;
                     putPumpAwayBtn.Enabled = false;
                     ResetVariable();
-
                     break;
 
                 case State.InsertCard:
@@ -174,7 +186,6 @@ namespace FuelStation
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
                     putPumpAwayBtn.Enabled = false;
-
                     break;
 
                 case State.PutCode:
@@ -187,7 +198,6 @@ namespace FuelStation
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
                     putPumpAwayBtn.Enabled = false;
-
                     break;
 
                 case State.PullCard:
@@ -200,7 +210,6 @@ namespace FuelStation
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
                     putPumpAwayBtn.Enabled = false;
-
                     break;
 
                 case State.ChooseTypeFuel:
@@ -213,7 +222,6 @@ namespace FuelStation
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
                     putPumpAwayBtn.Enabled = false;
-
                     break;
 
                 case State.PullPump:
@@ -226,23 +234,22 @@ namespace FuelStation
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
                     putPumpAwayBtn.Enabled = false;
-                    string name = Enum.GetName(typeof(FuelType), (int)fUi.SelectedFuelType);
+                    string name = Enum.GetName(typeof(FuelType), (int)FuelScreen.SelectedFuelType);
                     string s = ConfigurationManager.AppSettings[name];
-                    pU.UnitPrice = Convert.ToDouble(s);
-                    pU.UpdateUnitPrice();
+                    PriceUi.UnitPrice = Convert.ToDouble(s);
+                    PriceUi.UpdateUnitPrice();
                     break;
 
                 case State.TakeFuel:
                     touchScreenBtn.Enabled = false;
                     insertCardBtn.Enabled = false;
                     removeCardBtn.Enabled = false;
-                    pump1Btn.Enabled = true;
-                    pump2Btn.Enabled = true;
-                    pump3Btn.Enabled = true;
-                    pullTriggerBtn.Enabled = false;
+                    pump1Btn.Enabled = false;
+                    pump2Btn.Enabled = false;
+                    pump3Btn.Enabled = false;
+                    pullTriggerBtn.Enabled = true;
                     releaseTriggerBtn.Enabled = false;
-                    putPumpAwayBtn.Enabled = false;
-                   
+                    putPumpAwayBtn.Enabled = true;
                     break;
 
                 case State.InProgress:
@@ -255,7 +262,6 @@ namespace FuelStation
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = true;
                     putPumpAwayBtn.Enabled = false;
-
                     break;
 
                 case State.ErrorCode:
@@ -268,8 +274,7 @@ namespace FuelStation
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
                     putPumpAwayBtn.Enabled = false;
-                    Thread.Sleep(2000);
-                    EndProcess();
+                    SetTimer();
                     break;
 
                 case State.Thanks:
@@ -282,27 +287,26 @@ namespace FuelStation
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
                     putPumpAwayBtn.Enabled = false;
-                    EndProcess();
+                    SetTimer();
                     break;
-
             }
         }
 
         private void ResetVariable()
         {
-            th = null;
-            pU.ResetVariable();
-            fUi.ResetVariable();
+            WorkingThread = null;
+            PriceUi.ResetVariable();
+            FuelScreen.ResetVariable();
         }
 
-        private void EndProcess()
+        private void EndProcess(Object source, ElapsedEventArgs e)
         {
-            fUi.SelectTab((int)State.Welcome);
+            FuelScreen.SelectTab((int)State.Welcome);
         }
 
         private void FuelControl_FormClosed(object sender, FormClosedEventArgs e)
         {
-            th?.Abort();
+            WorkingThread?.Abort();
         }
 
         public void TriggerFalse()
@@ -310,7 +314,7 @@ namespace FuelStation
             if (releaseTriggerBtn.InvokeRequired && pullTriggerBtn.InvokeRequired && putPumpAwayBtn.InvokeRequired)
             {
                 TriggerFalseCallback d = new TriggerFalseCallback(TriggerFalse);
-                this.Invoke(d);
+                Invoke(d);
             }
             else
             {
@@ -318,6 +322,14 @@ namespace FuelStation
                 pullTriggerBtn.Enabled = false;
                 putPumpAwayBtn.Enabled = true;
             }
+        }
+
+        private void SetTimer()
+        {
+            EndTimer = new System.Timers.Timer(2000);
+            EndTimer.Elapsed += EndProcess;
+            EndTimer.AutoReset = false;
+            EndTimer.Enabled = true;
         }
     }
 }

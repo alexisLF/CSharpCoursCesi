@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -19,29 +20,36 @@ namespace FuelStation
         public State LastStateBeforeError;
         public FuelType SelectedFuelType;
         public int WrongCodeNumber { get; set; }
+        private delegate void SelectedTabCallback(int index);
 
         public FuelUi()
         {
             InitializeComponent();
-            numPad1.PressedValue += insertCardCode;
+            numPad1.PressedValue += InsertCardCode;
             State = State.Welcome;
         }
 
         public void SelectTab(int index)
         {
-            this.tabControl1.SelectedIndex = index;
-            if(State != State.ErrorCode && State != State.ErrorPump)
-                this.LastStateBeforeError = this.State;
-            //Change State
-            this.State = (State)index;
-            //manage tab
-            ChangeTab(this, State);
+            if (tabControl1.InvokeRequired)
+            {
+                SelectedTabCallback d = new SelectedTabCallback(SelectTab);
+                Invoke(d, new object[] { index });
+            }
+            else
+            {
+                tabControl1.SelectedIndex = index;
+                if (State != State.ErrorCode && State != State.ErrorPump)
+                    LastStateBeforeError = State;
+                //Change State
+                State = (State)index;
+                //manage tab
+                ChangeTab(this, State);
+            }
         }
 
-        public void insertCardCode(object sender, string value)
+        public void InsertCardCode(object sender, string value)
         {
-            //string value = numPad1.Value;
-            
             switch (value)
             {
                 case "X":
@@ -51,7 +59,6 @@ namespace FuelStation
                 case "O":
                     wrongCodeErrorLabel.Visible = false;
                     wrongFormatCodeErrorLabel.Visible = false;
-
                     ValidateCode();
                     break;
 
@@ -60,7 +67,11 @@ namespace FuelStation
                         CodeCB += value;
                     break;
             }
-            textBox1.Text = CodeCB;
+            textBox1.Text = "";
+            for (int i = 0; i < CodeCB.Length; ++i)
+            {
+                textBox1.Text += "*";
+            }
         }
 
         private void ValidateCode()
@@ -91,7 +102,6 @@ namespace FuelStation
         private void ShowWrongFormatCode()
         {
             wrongFormatCodeErrorLabel.Visible = true;
-
         }
 
         public void ShowErrorPumpTab()
@@ -101,7 +111,6 @@ namespace FuelStation
                 LastStateBeforeError = State;
                 SelectTab((int)State.ErrorPump);
             }
-            
         }
 
         private void FuelTypeBtn_Click(object sender, EventArgs e)
@@ -110,17 +119,14 @@ namespace FuelStation
             {
                 case "Gasole":
                     SelectedFuelType = FuelType.Gasole;
-
                     break;
 
                 case "SP95":
                     SelectedFuelType = FuelType.SP95;
-
                     break;
 
                 case "SP98":
                     SelectedFuelType = FuelType.SP98;
-
                     break;
             }
             SelectTab((int)State.PullPump);

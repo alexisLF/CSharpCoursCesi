@@ -105,9 +105,7 @@
             // 
             // welcomeLabel
             // 
-            this.welcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.welcomeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.BackColor = System.Drawing.Color.Transparent;
             this.welcomeLabel.Font = new System.Drawing.Font("Algerian", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -132,9 +130,7 @@
             // 
             // InsertCardLabel
             // 
-            this.InsertCardLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.InsertCardLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.InsertCardLabel.AutoSize = true;
             this.InsertCardLabel.BackColor = System.Drawing.Color.Transparent;
             this.InsertCardLabel.Font = new System.Drawing.Font("Algerian", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -162,6 +158,7 @@
             // 
             // wrongCodeErrorLabel
             // 
+            this.wrongCodeErrorLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.wrongCodeErrorLabel.AutoSize = true;
             this.wrongCodeErrorLabel.Font = new System.Drawing.Font("Algerian", 14F);
             this.wrongCodeErrorLabel.ForeColor = System.Drawing.Color.Red;
@@ -174,6 +171,7 @@
             // 
             // wrongFormatCodeErrorLabel
             // 
+            this.wrongFormatCodeErrorLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.wrongFormatCodeErrorLabel.AutoSize = true;
             this.wrongFormatCodeErrorLabel.BackColor = System.Drawing.Color.Transparent;
             this.wrongFormatCodeErrorLabel.Font = new System.Drawing.Font("Algerian", 14F);
@@ -187,15 +185,17 @@
             // 
             // numPad1
             // 
+            this.numPad1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.numPad1.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numPad1.Location = new System.Drawing.Point(202, 185);
             this.numPad1.Name = "numPad1";
-            this.numPad1.Size = new System.Drawing.Size(359, 483);
+            this.numPad1.Size = new System.Drawing.Size(205, 262);
             this.numPad1.TabIndex = 6;
             this.numPad1.Value = null;
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.textBox1.Location = new System.Drawing.Point(177, 120);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(271, 20);
@@ -203,9 +203,7 @@
             // 
             // putCodeLabel
             // 
-            this.putCodeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.putCodeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.putCodeLabel.AutoSize = true;
             this.putCodeLabel.BackColor = System.Drawing.Color.Transparent;
             this.putCodeLabel.Font = new System.Drawing.Font("Algerian", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -231,6 +229,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(145, 218);
             this.label2.Name = "label2";
@@ -253,6 +252,7 @@
             // 
             // pu95Btn
             // 
+            this.pu95Btn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pu95Btn.BackColor = System.Drawing.Color.LawnGreen;
             this.pu95Btn.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pu95Btn.Location = new System.Drawing.Point(350, 186);
@@ -265,6 +265,7 @@
             // 
             // su98Btn
             // 
+            this.su98Btn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.su98Btn.BackColor = System.Drawing.Color.LawnGreen;
             this.su98Btn.Font = new System.Drawing.Font("Algerian", 12F);
             this.su98Btn.Location = new System.Drawing.Point(224, 186);
@@ -277,6 +278,7 @@
             // 
             // gasoleBtn
             // 
+            this.gasoleBtn.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.gasoleBtn.BackColor = System.Drawing.Color.Gold;
             this.gasoleBtn.Font = new System.Drawing.Font("Algerian", 12F);
             this.gasoleBtn.ForeColor = System.Drawing.Color.Black;
@@ -290,9 +292,7 @@
             // 
             // fuelTypeLabel
             // 
-            this.fuelTypeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.fuelTypeLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.fuelTypeLabel.AutoSize = true;
             this.fuelTypeLabel.BackColor = System.Drawing.Color.Transparent;
             this.fuelTypeLabel.Font = new System.Drawing.Font("Algerian", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -316,9 +316,7 @@
             // 
             // takePumpLabel
             // 
-            this.takePumpLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.takePumpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.takePumpLabel.AutoSize = true;
             this.takePumpLabel.BackColor = System.Drawing.Color.Transparent;
             this.takePumpLabel.Font = new System.Drawing.Font("Algerian", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -342,9 +340,7 @@
             // 
             // takeFuelLabel
             // 
-            this.takeFuelLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.takeFuelLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.takeFuelLabel.AutoSize = true;
             this.takeFuelLabel.BackColor = System.Drawing.Color.Transparent;
             this.takeFuelLabel.Font = new System.Drawing.Font("Algerian", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -368,9 +364,7 @@
             // 
             // inProgressLabel
             // 
-            this.inProgressLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.inProgressLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.inProgressLabel.AutoSize = true;
             this.inProgressLabel.BackColor = System.Drawing.Color.Transparent;
             this.inProgressLabel.Font = new System.Drawing.Font("Algerian", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -394,9 +388,7 @@
             // 
             // thanksLabel
             // 
-            this.thanksLabel.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.thanksLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.thanksLabel.AutoSize = true;
             this.thanksLabel.BackColor = System.Drawing.Color.Transparent;
             this.thanksLabel.Font = new System.Drawing.Font("Algerian", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -421,6 +413,7 @@
             // 
             // ErrorPumpLabel
             // 
+            this.ErrorPumpLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.ErrorPumpLabel.AutoSize = true;
             this.ErrorPumpLabel.Font = new System.Drawing.Font("Algerian", 24F);
             this.ErrorPumpLabel.ForeColor = System.Drawing.Color.Red;
@@ -444,6 +437,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Algerian", 24F);
             this.label1.Location = new System.Drawing.Point(52, 156);
@@ -459,6 +453,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(613, 564);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FuelUi";
             this.Text = "FuelPriceUi";
             this.tabControl1.ResumeLayout(false);

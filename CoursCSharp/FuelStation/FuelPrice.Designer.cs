@@ -38,6 +38,7 @@
             // 
             // FuelLitreLabel
             // 
+            this.FuelLitreLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FuelLitreLabel.AutoSize = true;
             this.FuelLitreLabel.Location = new System.Drawing.Point(43, 28);
             this.FuelLitreLabel.Name = "FuelLitreLabel";
@@ -47,6 +48,7 @@
             // 
             // PriceBoxLabel
             // 
+            this.PriceBoxLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PriceBoxLabel.AutoSize = true;
             this.PriceBoxLabel.Location = new System.Drawing.Point(43, 65);
             this.PriceBoxLabel.Name = "PriceBoxLabel";
@@ -56,6 +58,7 @@
             // 
             // UnitPriceLabel
             // 
+            this.UnitPriceLabel.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UnitPriceLabel.AutoSize = true;
             this.UnitPriceLabel.Location = new System.Drawing.Point(43, 100);
             this.UnitPriceLabel.Name = "UnitPriceLabel";
@@ -65,6 +68,7 @@
             // 
             // UnitPriceBox
             // 
+            this.UnitPriceBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.UnitPriceBox.Location = new System.Drawing.Point(123, 97);
             this.UnitPriceBox.MaxLength = 4;
             this.UnitPriceBox.Name = "UnitPriceBox";
@@ -74,6 +78,7 @@
             // 
             // PriceBox
             // 
+            this.PriceBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.PriceBox.Location = new System.Drawing.Point(123, 62);
             this.PriceBox.MaxLength = 4;
             this.PriceBox.Name = "PriceBox";
@@ -83,6 +88,7 @@
             // 
             // FuelLiterBox
             // 
+            this.FuelLiterBox.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.FuelLiterBox.Location = new System.Drawing.Point(123, 25);
             this.FuelLiterBox.MaxLength = 4;
             this.FuelLiterBox.Name = "FuelLiterBox";
@@ -101,6 +107,7 @@
             this.Controls.Add(this.PriceBox);
             this.Controls.Add(this.FuelLitreLabel);
             this.Controls.Add(this.FuelLiterBox);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "FuelPrice";
             this.Text = "FuelPrice";
             this.ResumeLayout(false);

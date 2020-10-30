@@ -10,7 +10,7 @@
 
         public void ShowPumpError()
         {
-            Control.fUi.ShowErrorPumpTab();
+            Control.FuelScreen.ShowErrorPumpTab();
         }
     }
 }
