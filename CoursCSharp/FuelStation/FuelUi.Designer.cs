@@ -34,9 +34,13 @@
             this.insertCardPage = new System.Windows.Forms.TabPage();
             this.InsertCardLabel = new System.Windows.Forms.Label();
             this.codePage = new System.Windows.Forms.TabPage();
+            this.wrongCodeErrorLabel = new System.Windows.Forms.Label();
+            this.wrongFormatCodeErrorLabel = new System.Windows.Forms.Label();
             this.numPad1 = new FuelStation.NumPad();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.putCodeLabel = new System.Windows.Forms.Label();
+            this.pullCardTab = new System.Windows.Forms.TabPage();
+            this.label2 = new System.Windows.Forms.Label();
             this.fuelTypePage = new System.Windows.Forms.TabPage();
             this.pu95Btn = new System.Windows.Forms.Button();
             this.su98Btn = new System.Windows.Forms.Button();
@@ -52,16 +56,13 @@
             this.thanksLabel = new System.Windows.Forms.Label();
             this.ErrorPumpTab = new System.Windows.Forms.TabPage();
             this.ErrorPumpLabel = new System.Windows.Forms.Label();
-            this.wrongFormatCodeErrorLabel = new System.Windows.Forms.Label();
-            this.wrongCodeErrorLabel = new System.Windows.Forms.Label();
             this.ErrorCodeTab = new System.Windows.Forms.TabPage();
             this.label1 = new System.Windows.Forms.Label();
-            this.pullCardTab = new System.Windows.Forms.TabPage();
-            this.label2 = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.welcomePage.SuspendLayout();
             this.insertCardPage.SuspendLayout();
             this.codePage.SuspendLayout();
+            this.pullCardTab.SuspendLayout();
             this.fuelTypePage.SuspendLayout();
             this.pumpPage.SuspendLayout();
             this.takeFuelPage.SuspendLayout();
@@ -69,7 +70,6 @@
             this.thanksPage.SuspendLayout();
             this.ErrorPumpTab.SuspendLayout();
             this.ErrorCodeTab.SuspendLayout();
-            this.pullCardTab.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -160,6 +160,31 @@
             this.codePage.TabIndex = 2;
             this.codePage.Text = "Code";
             // 
+            // wrongCodeErrorLabel
+            // 
+            this.wrongCodeErrorLabel.AutoSize = true;
+            this.wrongCodeErrorLabel.Font = new System.Drawing.Font("Algerian", 14F);
+            this.wrongCodeErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.wrongCodeErrorLabel.Location = new System.Drawing.Point(181, 172);
+            this.wrongCodeErrorLabel.Name = "wrongCodeErrorLabel";
+            this.wrongCodeErrorLabel.Size = new System.Drawing.Size(243, 21);
+            this.wrongCodeErrorLabel.TabIndex = 8;
+            this.wrongCodeErrorLabel.Text = "Wrong Code ! Try again.";
+            this.wrongCodeErrorLabel.Visible = false;
+            // 
+            // wrongFormatCodeErrorLabel
+            // 
+            this.wrongFormatCodeErrorLabel.AutoSize = true;
+            this.wrongFormatCodeErrorLabel.BackColor = System.Drawing.Color.Transparent;
+            this.wrongFormatCodeErrorLabel.Font = new System.Drawing.Font("Algerian", 14F);
+            this.wrongFormatCodeErrorLabel.ForeColor = System.Drawing.Color.Red;
+            this.wrongFormatCodeErrorLabel.Location = new System.Drawing.Point(177, 147);
+            this.wrongFormatCodeErrorLabel.Name = "wrongFormatCodeErrorLabel";
+            this.wrongFormatCodeErrorLabel.Size = new System.Drawing.Size(271, 21);
+            this.wrongFormatCodeErrorLabel.TabIndex = 7;
+            this.wrongFormatCodeErrorLabel.Text = "Please tap a 4-digit code !";
+            this.wrongFormatCodeErrorLabel.Visible = false;
+            // 
             // numPad1
             // 
             this.numPad1.Font = new System.Drawing.Font("Algerian", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -191,6 +216,27 @@
             this.putCodeLabel.TabIndex = 3;
             this.putCodeLabel.Text = "Tap your code";
             this.putCodeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // pullCardTab
+            // 
+            this.pullCardTab.BackColor = System.Drawing.Color.Black;
+            this.pullCardTab.Controls.Add(this.label2);
+            this.pullCardTab.Font = new System.Drawing.Font("Algerian", 24F);
+            this.pullCardTab.ForeColor = System.Drawing.Color.Gold;
+            this.pullCardTab.Location = new System.Drawing.Point(4, 22);
+            this.pullCardTab.Name = "pullCardTab";
+            this.pullCardTab.Size = new System.Drawing.Size(608, 545);
+            this.pullCardTab.TabIndex = 10;
+            this.pullCardTab.Text = "Remove your card.";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(145, 218);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(325, 35);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Remove your card.";
             // 
             // fuelTypePage
             // 
@@ -380,34 +426,9 @@
             this.ErrorPumpLabel.ForeColor = System.Drawing.Color.Red;
             this.ErrorPumpLabel.Location = new System.Drawing.Point(68, 245);
             this.ErrorPumpLabel.Name = "ErrorPumpLabel";
-            this.ErrorPumpLabel.Size = new System.Drawing.Size(481, 35);
+            this.ErrorPumpLabel.Size = new System.Drawing.Size(448, 35);
             this.ErrorPumpLabel.TabIndex = 7;
-            this.ErrorPumpLabel.Text = "Please take the right pump";
-            // 
-            // wrongFormatCodeErrorLabel
-            // 
-            this.wrongFormatCodeErrorLabel.AutoSize = true;
-            this.wrongFormatCodeErrorLabel.BackColor = System.Drawing.Color.Transparent;
-            this.wrongFormatCodeErrorLabel.Font = new System.Drawing.Font("Algerian", 14F);
-            this.wrongFormatCodeErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.wrongFormatCodeErrorLabel.Location = new System.Drawing.Point(177, 147);
-            this.wrongFormatCodeErrorLabel.Name = "wrongFormatCodeErrorLabel";
-            this.wrongFormatCodeErrorLabel.Size = new System.Drawing.Size(271, 21);
-            this.wrongFormatCodeErrorLabel.TabIndex = 7;
-            this.wrongFormatCodeErrorLabel.Text = "Please tap a 4-digit code !";
-            this.wrongFormatCodeErrorLabel.Visible = false;
-            // 
-            // wrongCodeErrorLabel
-            // 
-            this.wrongCodeErrorLabel.AutoSize = true;
-            this.wrongCodeErrorLabel.Font = new System.Drawing.Font("Algerian", 14F);
-            this.wrongCodeErrorLabel.ForeColor = System.Drawing.Color.Red;
-            this.wrongCodeErrorLabel.Location = new System.Drawing.Point(181, 172);
-            this.wrongCodeErrorLabel.Name = "wrongCodeErrorLabel";
-            this.wrongCodeErrorLabel.Size = new System.Drawing.Size(243, 21);
-            this.wrongCodeErrorLabel.TabIndex = 8;
-            this.wrongCodeErrorLabel.Text = "Wrong Code ! Try again.";
-            this.wrongCodeErrorLabel.Visible = false;
+            this.ErrorPumpLabel.Text = "Please put the pump back";
             // 
             // ErrorCodeTab
             // 
@@ -432,27 +453,6 @@
             this.label1.Text = "3 wrong code. \r\nWe only accept rich people !!!";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pullCardTab
-            // 
-            this.pullCardTab.BackColor = System.Drawing.Color.Black;
-            this.pullCardTab.Controls.Add(this.label2);
-            this.pullCardTab.Font = new System.Drawing.Font("Algerian", 24F);
-            this.pullCardTab.ForeColor = System.Drawing.Color.Gold;
-            this.pullCardTab.Location = new System.Drawing.Point(4, 22);
-            this.pullCardTab.Name = "pullCardTab";
-            this.pullCardTab.Size = new System.Drawing.Size(608, 545);
-            this.pullCardTab.TabIndex = 10;
-            this.pullCardTab.Text = "Remove your card.";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(145, 218);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(325, 35);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Remove your card.";
-            // 
             // FuelUi
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,6 +468,8 @@
             this.insertCardPage.PerformLayout();
             this.codePage.ResumeLayout(false);
             this.codePage.PerformLayout();
+            this.pullCardTab.ResumeLayout(false);
+            this.pullCardTab.PerformLayout();
             this.fuelTypePage.ResumeLayout(false);
             this.fuelTypePage.PerformLayout();
             this.pumpPage.ResumeLayout(false);
@@ -482,8 +484,6 @@
             this.ErrorPumpTab.PerformLayout();
             this.ErrorCodeTab.ResumeLayout(false);
             this.ErrorCodeTab.PerformLayout();
-            this.pullCardTab.ResumeLayout(false);
-            this.pullCardTab.PerformLayout();
             this.ResumeLayout(false);
 
         }

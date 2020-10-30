@@ -70,17 +70,12 @@ namespace FuelStation
         {
             PumpPulled = true;
             pump2Btn.Enabled = false;
+            putPumpAwayBtn.Enabled = true;
             pump3Btn.Enabled = false;
             if (fUi.State == State.PullPump && fUi.SelectedFuelType == FuelType.Gasole)
-            {
                 pullTriggerBtn.Enabled = true;
-            }
             else
-            {
-               
                 err.ShowPumpError();
-
-            }
 
         }
 
@@ -89,13 +84,11 @@ namespace FuelStation
             PumpPulled = true;
             pump1Btn.Enabled = false;
             pump3Btn.Enabled = false;
+            putPumpAwayBtn.Enabled = true;
             if (fUi.State == State.PullPump && fUi.SelectedFuelType == FuelType.SP98)
                 pullTriggerBtn.Enabled = true;
             else
-            {
-               
                 err.ShowPumpError();
-            }
         }
 
         private void pump3Btn_Click(object sender, EventArgs e)
@@ -103,21 +96,18 @@ namespace FuelStation
             PumpPulled = true;
             pump1Btn.Enabled = false;
             pump2Btn.Enabled = false;
+            putPumpAwayBtn.Enabled = true;
+
             if (fUi.State == State.PullPump && fUi.SelectedFuelType == FuelType.SP95)
-            {
                 pullTriggerBtn.Enabled = true;
-            }
             else
-            {
                 err.ShowPumpError();
-            }
         }
 
         private void pullTriggerBtn_Click(object sender, EventArgs e)
         {
             if(fUi.State == State.PullPump)
             {
-                
                 fUi.SelectTab((int)State.InProgress);
                 if (th == null)
                 {
@@ -169,7 +159,7 @@ namespace FuelStation
                     pump3Btn.Enabled = true;
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
-                    putPumpAwayBtn.Enabled = true;
+                    putPumpAwayBtn.Enabled = false;
                     ResetVariable();
 
                     break;
@@ -183,7 +173,7 @@ namespace FuelStation
                     pump3Btn.Enabled = true;
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
-                    putPumpAwayBtn.Enabled = true;
+                    putPumpAwayBtn.Enabled = false;
 
                     break;
 
@@ -196,7 +186,7 @@ namespace FuelStation
                     pump3Btn.Enabled = true;
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
-                    putPumpAwayBtn.Enabled = true;
+                    putPumpAwayBtn.Enabled = false;
 
                     break;
 
@@ -209,7 +199,7 @@ namespace FuelStation
                     pump3Btn.Enabled = true;
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
-                    putPumpAwayBtn.Enabled = true;
+                    putPumpAwayBtn.Enabled = false;
 
                     break;
 
@@ -222,7 +212,7 @@ namespace FuelStation
                     pump3Btn.Enabled = true;
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
-                    putPumpAwayBtn.Enabled = true;
+                    putPumpAwayBtn.Enabled = false;
 
                     break;
 
@@ -235,7 +225,7 @@ namespace FuelStation
                     pump3Btn.Enabled = true;
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
-                    putPumpAwayBtn.Enabled = true;
+                    putPumpAwayBtn.Enabled = false;
                     string name = Enum.GetName(typeof(FuelType), (int)fUi.SelectedFuelType);
                     string s = ConfigurationManager.AppSettings[name];
                     pU.UnitPrice = Convert.ToDouble(s);
@@ -251,7 +241,7 @@ namespace FuelStation
                     pump3Btn.Enabled = true;
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
-                    putPumpAwayBtn.Enabled = true;
+                    putPumpAwayBtn.Enabled = false;
                    
                     break;
 
@@ -291,7 +281,7 @@ namespace FuelStation
                     pump3Btn.Enabled = true;
                     pullTriggerBtn.Enabled = false;
                     releaseTriggerBtn.Enabled = false;
-                    putPumpAwayBtn.Enabled = true;
+                    putPumpAwayBtn.Enabled = false;
                     EndProcess();
                     break;
 
