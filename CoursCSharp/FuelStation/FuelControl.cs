@@ -19,6 +19,8 @@ namespace FuelStation
         Thread th;
         ErrorManager err { get; set; }
         private bool IsCardInside { get; set; } = false;
+        private delegate void TriggerFalseCallback();
+
 
         public FuelControl()
         {
@@ -28,10 +30,18 @@ namespace FuelStation
             err = new ErrorManager(this);
             fUi.ChangeTab += ManageStateApp;
             fUi.SelectTab(0);
+            pU.MaxPrice += ManageEndPump;
             pU.Show();
             fUi.Show();
             int screenWidth = Screen.PrimaryScreen.Bounds.Width;
             int screenHeight = Screen.PrimaryScreen.Bounds.Height;
+        }
+
+        private void ManageEndPump(object sender, EventArgs e)
+        {
+            TriggerFalse();
+            th.Abort();
+
         }
 
         private void touchScreenBtn_Click(object sender, EventArgs e)
@@ -235,6 +245,21 @@ namespace FuelStation
         private void FuelControl_FormClosed(object sender, FormClosedEventArgs e)
         {
             th?.Abort();
+        }
+
+        public void TriggerFalse()
+        {
+            if (releaseTriggerBtn.InvokeRequired && pullTriggerBtn.InvokeRequired && putPumpAwayBtn.InvokeRequired)
+            {
+                TriggerFalseCallback d = new TriggerFalseCallback(TriggerFalse);
+                this.Invoke(d);
+            }
+            else
+            {
+                releaseTriggerBtn.Enabled = false;
+                pullTriggerBtn.Enabled = false;
+                putPumpAwayBtn.Enabled = true;
+            }
         }
     }
 }

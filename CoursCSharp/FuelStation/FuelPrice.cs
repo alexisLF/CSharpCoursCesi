@@ -1,4 +1,5 @@
-﻿using System.Configuration;
+﻿using System;
+using System.Configuration;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -12,6 +13,7 @@ namespace FuelStation
         public EventWaitHandle waitThread = new EventWaitHandle(false, EventResetMode.ManualReset);
         private delegate void UpdateFuelLitreCallback();
         private delegate void UpdatePriceCallback();
+        public EventHandler MaxPrice;
         public FuelPrice()
         {
             InitializeComponent();
@@ -61,8 +63,15 @@ namespace FuelStation
                 Price = FuelLitre * UnitPrice;
                 UpdateFuelLitre();
                 UpdatePrice();
-                Thread.Sleep(9);
+                //Thread.Sleep(9);
             }
+            
+            StopPump();
+        }
+
+        private void StopPump()
+        {
+            MaxPrice(this, EventArgs.Empty);
         }
     }
 }
