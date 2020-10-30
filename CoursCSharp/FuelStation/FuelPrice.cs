@@ -73,5 +73,15 @@ namespace FuelStation
         {
             MaxPrice(this, EventArgs.Empty);
         }
+
+        internal void ResetVariable()
+        {
+            UnitPrice = 0;
+            Price = 0;
+            FuelLitre = 0;
+            UpdatePrice();
+            UpdateUnitPrice();
+            UpdateFuelLitre();
+        }
     }
 }

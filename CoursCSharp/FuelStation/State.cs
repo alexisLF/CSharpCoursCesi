@@ -13,9 +13,11 @@ namespace FuelStation
         PutCode,
         PullCard,
         ChooseTypeFuel,
+        PullPump,
         TakeFuel,
         InProgress,
         Thanks,
-        ErrorPump
+        ErrorPump,
+        ErrorCode,
     }
 }

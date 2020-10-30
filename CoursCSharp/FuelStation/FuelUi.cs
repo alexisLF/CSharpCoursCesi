@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace FuelStation
         public EventHandler<State> ChangeTab;
         public State LastStateBeforeError;
         public FuelType SelectedFuelType;
+        public int WrongCodeNumber { get; set; }
 
         public FuelUi()
         {
@@ -28,7 +30,8 @@ namespace FuelStation
         public void SelectTab(int index)
         {
             this.tabControl1.SelectedIndex = index;
-            this.LastStateBeforeError = this.State;
+            if(State != State.ErrorCode && State != State.ErrorPump)
+                this.LastStateBeforeError = this.State;
             //Change State
             this.State = (State)index;
             //manage tab
@@ -46,6 +49,9 @@ namespace FuelStation
                     break;
 
                 case "O":
+                    wrongCodeErrorLabel.Visible = false;
+                    wrongFormatCodeErrorLabel.Visible = false;
+
                     ValidateCode();
                     break;
 
@@ -61,23 +67,41 @@ namespace FuelStation
         {
             if(CodeCB.Length == 4)
             {
-                SelectTab(3);
+                if (CodeCB.Equals(ConfigurationManager.AppSettings["PinCode"]))
+                    SelectTab((int)State.PullCard);
+                else
+                    ShowWrongCodeError();
             }
+            else
+            {
+                ShowWrongFormatCode();
+            }
+        }
+
+        private void ShowWrongCodeError()
+        {
+            CodeCB = "";
+            ++WrongCodeNumber;
+            if (WrongCodeNumber < 3)
+                wrongCodeErrorLabel.Visible = true;
+            else
+                SelectTab((int)State.ErrorCode);
+        }
+
+        private void ShowWrongFormatCode()
+        {
+            wrongFormatCodeErrorLabel.Visible = true;
+
         }
 
         public void ShowErrorPumpTab()
         {
-            if(LastStateBeforeError != State.ErrorPump)
+            if(State != State.ErrorPump && State != State.ErrorCode)
             {
                 LastStateBeforeError = State;
                 SelectTab((int)State.ErrorPump);
             }
             
-        }
-
-        public void ReturnToNormalState()
-        {
-            SelectTab((int)LastStateBeforeError);
         }
 
         private void FuelTypeBtn_Click(object sender, EventArgs e)
@@ -99,7 +123,16 @@ namespace FuelStation
 
                     break;
             }
-            SelectTab((int)State.TakeFuel);
+            SelectTab((int)State.PullPump);
+        }
+
+        internal void ResetVariable()
+        {
+            CodeCB = "";
+            State = State.Welcome;
+            LastStateBeforeError = State.Welcome;
+            WrongCodeNumber = 0;
+            textBox1.Text = "";
         }
     }
 }
