@@ -7,6 +7,7 @@ namespace FuelStation
 {
     public partial class FuelPrice : Form
     {
+        #region Properties
         public double Price { get; set; }
         public double UnitPrice { get; set; }
         public double FuelLitre { get; set; }
@@ -14,6 +15,8 @@ namespace FuelStation
         private delegate void UpdateFuelLitreCallback();
         private delegate void UpdatePriceCallback();
         public EventHandler MaxPrice;
+        #endregion
+        #region Ctor
         public FuelPrice()
         {
             InitializeComponent();
@@ -21,7 +24,8 @@ namespace FuelStation
             PriceBox.Text = Price.ToString();
             UnitPriceBox.Text = UnitPrice.ToString();
         }
-
+        #endregion
+        #region Other Methods
         public void UpdateFuelLitre()
         {
             if (!FuelLiterBox.InvokeRequired)
@@ -62,6 +66,7 @@ namespace FuelStation
                 Price = FuelLitre * UnitPrice;
                 UpdateFuelLitre();
                 UpdatePrice();
+                Thread.Sleep(10);
             }
             StopPump();
         }
@@ -80,5 +85,7 @@ namespace FuelStation
             UpdateUnitPrice();
             UpdateFuelLitre();
         }
+        #endregion
+
     }
 }

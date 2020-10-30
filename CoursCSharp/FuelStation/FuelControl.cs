@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
 
@@ -15,6 +9,7 @@ namespace FuelStation
 {
     public partial class FuelControl : Form
     {
+        #region Properties
         public FuelPrice PriceUi { get; set; }
         public FuelUi FuelScreen { get; set; }
         private Thread WorkingThread;
@@ -22,7 +17,8 @@ namespace FuelStation
         public bool PumpPulled { get; set; } = false;
         private delegate void TriggerFalseCallback();
         private static System.Timers.Timer EndTimer;
-
+        #endregion
+        #region Ctor
         public FuelControl()
         {
             InitializeComponent();
@@ -54,28 +50,23 @@ namespace FuelStation
             PriceUi.Show();
             FuelScreen.Show();
         }
-
-        private void ManageEndPump(object sender, EventArgs e)
-        {
-            TriggerFalse();
-            WorkingThread.Abort();
-        }
-
+        #endregion
+        #region Event Methods
         private void TouchScreenBtn_Click(object sender, EventArgs e)
         {
-            if(FuelScreen.State == State.Welcome)
+            if (FuelScreen.State == State.Welcome)
                 FuelScreen.SelectTab((int)State.InsertCard);
         }
 
         private void InsertCardBtn_Click(object sender, EventArgs e)
         {
-            if(FuelScreen.State == State.Welcome || FuelScreen.State == State.InsertCard)
+            if (FuelScreen.State == State.Welcome || FuelScreen.State == State.InsertCard)
                 FuelScreen.SelectTab((int)State.PutCode);
         }
 
         private void RemoveCardBtn_Click(object sender, EventArgs e)
         {
-            if(FuelScreen.State == State.PullCard)
+            if (FuelScreen.State == State.PullCard)
                 FuelScreen.SelectTab((int)State.ChooseTypeFuel);
             else
                 FuelScreen.SelectTab((int)State.Welcome);
@@ -120,7 +111,7 @@ namespace FuelStation
 
         private void PullTriggerBtn_Click(object sender, EventArgs e)
         {
-            if(FuelScreen.State == State.TakeFuel)
+            if (FuelScreen.State == State.TakeFuel)
             {
                 FuelScreen.SelectTab((int)State.InProgress);
                 if (WorkingThread == null)
@@ -142,7 +133,6 @@ namespace FuelStation
             {
                 FuelScreen.SelectTab((int)State.TakeFuel);
                 PriceUi.waitThread.Reset();
-                
             }
         }
 
@@ -158,7 +148,8 @@ namespace FuelStation
                 FuelScreen.SelectTab((int)State.Thanks);
             }
         }
-
+        #endregion
+        #region Others
         private void ManageStateApp(object sender, State state)
         {
             switch (state)
@@ -299,7 +290,7 @@ namespace FuelStation
             FuelScreen.ResetVariable();
         }
 
-        private void EndProcess(Object source, ElapsedEventArgs e)
+        private void EndProcess(object source, ElapsedEventArgs e)
         {
             FuelScreen.SelectTab((int)State.Welcome);
         }
@@ -331,5 +322,12 @@ namespace FuelStation
             EndTimer.AutoReset = false;
             EndTimer.Enabled = true;
         }
+        
+        private void ManageEndPump(object sender, EventArgs e)
+        {
+            TriggerFalse();
+            WorkingThread.Abort();
+        }
+        #endregion
     }
 }

@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Configuration;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace FuelStation
 {
     public partial class FuelUi : Form
     {
+        #region Properties
         private string CodeCB = "";
         public State State { get; set; }
         public EventHandler<State> ChangeTab;
@@ -21,14 +14,36 @@ namespace FuelStation
         public FuelType SelectedFuelType;
         public int WrongCodeNumber { get; set; }
         private delegate void SelectedTabCallback(int index);
-
+        #endregion
+        #region Ctor
         public FuelUi()
         {
             InitializeComponent();
             numPad1.PressedValue += InsertCardCode;
             State = State.Welcome;
         }
+        #endregion
+        #region Event Methods
+        private void FuelTypeBtn_Click(object sender, EventArgs e)
+        {
+            switch (((Button)sender).Text)
+            {
+                case "Gasole":
+                    SelectedFuelType = FuelType.Gasole;
+                    break;
 
+                case "SP95":
+                    SelectedFuelType = FuelType.SP95;
+                    break;
+
+                case "SP98":
+                    SelectedFuelType = FuelType.SP98;
+                    break;
+            }
+            SelectTab((int)State.PullPump);
+        }
+        #endregion
+        #region Other Methods
         public void SelectTab(int index)
         {
             if (tabControl1.InvokeRequired)
@@ -113,25 +128,6 @@ namespace FuelStation
             }
         }
 
-        private void FuelTypeBtn_Click(object sender, EventArgs e)
-        {
-            switch (((Button)sender).Text)
-            {
-                case "Gasole":
-                    SelectedFuelType = FuelType.Gasole;
-                    break;
-
-                case "SP95":
-                    SelectedFuelType = FuelType.SP95;
-                    break;
-
-                case "SP98":
-                    SelectedFuelType = FuelType.SP98;
-                    break;
-            }
-            SelectTab((int)State.PullPump);
-        }
-
         internal void ResetVariable()
         {
             CodeCB = "";
@@ -140,5 +136,7 @@ namespace FuelStation
             WrongCodeNumber = 0;
             textBox1.Text = "";
         }
+        #endregion
+
     }
 }
